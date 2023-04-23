@@ -1,7 +1,6 @@
+import 'package:ankit/utils/utils.dart';
+import 'package:ankit/view/sp2.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../utils/utils.dart';
 
 // class Sp extends StatefulWidget {
 //   const Sp({Key? key}) : super(key: key);
@@ -125,7 +124,7 @@ class _SpState extends State<Sp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getData();
+    // getData();
   }
 
   @override
@@ -165,23 +164,29 @@ class _SpState extends State<Sp> {
                 ),
               ),
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               ElevatedButton(
                 onPressed: () async {
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  prefs.setString("name", C1.text.toString());
-                  prefs.setString("age", C2.text.toString());
+                  // SharedPreferences prefs =
+                  //     await SharedPreferences.getInstance();
+                  // prefs.setString("name", C1.text.toString());
+                  // prefs.setString("age", C2.text.toString());
+                  SharedPrefService()
+                      .addToSharedPref(key: "name", value: C1.text.toString());
+                  SharedPrefService()
+                      .addToSharedPref(key: "age", value: C1.text.toString());
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Sp2()));
                 },
                 child: const Text("Save"),
               ),
-              ElevatedButton(
-                onPressed: () async {
-                  getData();
-                  await Utils.setLogin(isLogin: true);
-                },
-                child: const Text("get-value"),
-              ),
+              // ElevatedButton(
+              //   onPressed: () async {
+              //     // getData();
+              //     // await Utils.setLogin(isLogin: true);
+              //   },
+              //   child: const Text("get-value"),
+              // ),
             ])
           ],
         ),
@@ -189,11 +194,12 @@ class _SpState extends State<Sp> {
     );
   }
 
-  getData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      C1.text = prefs.getString('name') ?? "";
-      C2.text = prefs.getString('age') ?? "";
-    });
-  }
+// getData() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   setState(() {
+//     C1.text = prefs.getString('name') ?? "";
+//     C2.text = prefs.getString('age') ?? "";
+//   });
+// }
+
 }

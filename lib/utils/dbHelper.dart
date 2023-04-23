@@ -46,6 +46,11 @@ class DbHelper{
     return await _db.insert(table, row);
   }
 
+  Future<int> insertwithQuari(String name, int age) async {
+    return await _db.rawInsert(
+        'INSERT INTO $table(name, age) VALUES($name,$age)');
+  }
+
   // All of the rows are returned as a list of maps, where each map is
   // a key-value list of columns.
   Future<List<Map<String, dynamic>>> getData() async {
