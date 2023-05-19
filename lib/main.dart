@@ -1,10 +1,6 @@
-import 'package:ankit/view/api_productmodel.dart';
-import 'package:ankit/view/pagination_Screen.dart';
-import 'package:ankit/view/sp.dart';
-import 'package:ankit/view/sqfScreen.dart';
+import 'package:ankit/view/grid_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:sqflite/sqflite.dart';
 
 import 'model/paginationModel.dart';
 
@@ -24,7 +20,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Sp(),
+      home: Home(),
+      //PaginationScreen(),
+      //Sp(),
     );
   }
 }
